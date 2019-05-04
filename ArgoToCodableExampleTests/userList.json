@@ -1,0 +1,55 @@
+{
+    "id": 0,
+    "users" : [
+        {
+            "firstname": "Wayne",
+            "lastname": "Walsh",
+            "headline": null,
+            "isEmployee": true,
+            "employee_level": "junior",
+            "resume_url": "https://workable.com",
+            "friends": {
+                "id": 10
+            },
+            "social_profiles": [
+                {
+                    "type": "twitter",
+                    "name": "Twitter",
+                    "username": "wayne_walsh",
+                    "url": "http://www.twitter.com/wayne_walsh"
+                },
+                {
+                    "type": "linkedin",
+                    "name": "LinkedIn",
+                    "username": "Wayne_Walsh",
+                    "url": "http://www.linkedin.com/in/Wayne_Walsh"
+                }
+            ]
+        },
+        {
+            "firstname": "Natalie",
+            "lastname": "Sung",
+            "headline": null,
+            "isEmployee": true,
+            "employee_level": "junior",
+            "resume_url": "https://workable.com",
+            "friends": {
+                "id": 10
+            },
+            "social_profiles": [
+                {
+                    "type": "twitter",
+                    "name": "Twitter",
+                    "username": "natalie_sung",
+                    "url": "http://www.twitter.com/natalie_sung"
+                },
+                {
+                    "type": "linkedin",
+                    "name": "LinkedIn",
+                    "username": "Natalie_Sung",
+                    "url": "http://www.linkedin.com/in/Natalie_Sung"
+                }
+            ]
+        }
+    ]
+}

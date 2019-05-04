@@ -1,0 +1,6 @@
+framework module Pods_ArgoToCodableExample_ArgoToCodableExampleTests {
+  umbrella header "Pods-ArgoToCodableExample-ArgoToCodableExampleTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

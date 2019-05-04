@@ -1,0 +1,37 @@
+PODS:
+  - Argo (4.1.2):
+    - Runes (>= 4.0.0)
+  - Curry (4.0.0)
+  - Nimble (8.0.0)
+  - Ogra (4.1.2):
+    - Argo (= 4.1.2)
+  - Quick (2.0.0)
+  - Runes (4.1.0)
+
+DEPENDENCIES:
+  - Argo
+  - Curry
+  - Nimble
+  - Ogra
+  - Quick
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Argo
+    - Curry
+    - Nimble
+    - Ogra
+    - Quick
+    - Runes
+
+SPEC CHECKSUMS:
+  Argo: 5db06502fc1222d83011f574243089dab25202ff
+  Curry: 887c0b9de9a9947820a59557459c7895e76d7b90
+  Nimble: a0e6f95b4b91a4f66b6da3512b6bebc07c9cbf49
+  Ogra: fc959d1038250a83e4ffa11ece1a6bbd3a1e547f
+  Quick: ce1276c7c27ba2da3cb2fd0cde053c3648b3b22d
+  Runes: 72a67a5bbbe1b5fdae08b5a01b10c60d83fc69aa
+
+PODFILE CHECKSUM: bf6e4af9d3629e0327a3a27316e9037c98b37919
+
+COCOAPODS: 1.6.1

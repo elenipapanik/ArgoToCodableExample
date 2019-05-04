@@ -1,0 +1,5 @@
+#import <Foundation/Foundation.h>
+@interface PodsDummy_Pods_ArgoToCodableExample_ArgoToCodableExampleTests : NSObject
+@end
+@implementation PodsDummy_Pods_ArgoToCodableExample_ArgoToCodableExampleTests
+@end
