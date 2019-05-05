@@ -21,9 +21,8 @@ extension SwiftArgoDecodableCompatible {
             let decodedValue = try JSONDecoder().decode(Self.self, from: jsonData)
             return .success(decodedValue)
         } catch {
-            print("error: \(error)")
+             return Decoded.failure(DecodeError.custom("Argo decoding error"))
         }
-        return Decoded.failure(DecodeError.custom("Argo decoding error"))
     }
 }
 
