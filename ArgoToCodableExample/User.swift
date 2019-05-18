@@ -22,7 +22,7 @@ struct User {
 }
 
 extension User: Swift.Decodable {}
-extension User: ArgoSwiftDecodableCompatible {
+extension User: ArgoToSwiftDecodable {
     static func decode(_ json: JSON) -> Decoded<User> {
         return curry(self.init)
             <^> json <|? "firstname"
@@ -45,13 +45,14 @@ extension EmployeeLevel: Argo.Decodable {}
 
 extension EmployeeLevel: Swift.Decodable {}
 
-struct SocialProfile: Swift.Decodable, SwiftArgoDecodableCompatible {
+struct SocialProfile: Swift.Decodable, SwiftToArgoDecodable {
     let type: String
     let url: String
     let username: String?
     let name: String?
 }
 
+//We don't need this implementation any more
 //extension SocialProfile: Argo.Decodable {
 //    static func decode(_ json: JSON) -> Decoded<SocialProfile> {
 //        return curry(self.init)

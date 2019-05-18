@@ -12,31 +12,42 @@ import Runes
 import Ogra
 
 // for models that are ALREADY Swift.Decodable and want to be used inside an Argo decodable object
-protocol SwiftArgoDecodableCompatible: Argo.Decodable, Swift.Decodable where Self.DecodedType == Self {}
+protocol SwiftToArgoDecodable: Argo.Decodable {}
 
-extension SwiftArgoDecodableCompatible {
+extension SwiftToArgoDecodable where Self: Swift.Decodable, Self.DecodedType == Self {
     static func decode(_ json: JSON) -> Decoded<DecodedType> {
         do {
             let jsonData = try JSONSerialization.data(withJSONObject: json.JSONObject(), options: [])
             let decodedValue = try JSONDecoder().decode(Self.self, from: jsonData)
             return .success(decodedValue)
-        } catch {
-             return Decoded.failure(DecodeError.custom("Argo decoding error"))
+        } catch let error {
+            return .failure(.custom(error.localizedDescription))
         }
     }
 }
 
 // For models that are ALREADY Argo decodable and want to be used inside Swift decodable object
-protocol ArgoSwiftDecodableCompatible: Argo.Decodable where Self.DecodedType == Self, Self: Swift.Decodable{}
+protocol ArgoToSwiftDecodable: Argo.Decodable where Self.DecodedType == Self, Self: Swift.Decodable{}
 
-extension ArgoSwiftDecodableCompatible {
+extension ArgoToSwiftDecodable {
     init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        let payload = try container.decode([String: Argo.JSON].self)
-        let json = JSON.object(payload)
+        let json = try container.decode(JSON.self)
         self = try Self.decode(json).dematerialize()
     }
 }
+
+//UserListSpec fails and has to do with protocol signature (not the implementation)
+//protocol ArgoToSwiftDecodable: Swift.Decodable {}
+//
+//extension ArgoToSwiftDecodable where Self: Argo.Decodable, Self.DecodedType == Self {
+//    init(from decoder: Decoder) throws {
+//        let container = try decoder.singleValueContainer()
+//        let json = try container.decode(JSON.self)
+//        self = try Self.decode(json).dematerialize()
+//    }
+//}
+
 
 extension Argo.JSON: Swift.Decodable {
     public init(from decoder: Decoder) throws {
