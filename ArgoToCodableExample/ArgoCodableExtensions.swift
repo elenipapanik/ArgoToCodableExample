@@ -71,20 +71,3 @@ extension Argo.JSON: Swift.Decodable {
         }
     }
 }
-
-extension Swift.Decodable {
-
-    static func decode<T: Swift.Decodable>(from jsonString: String) throws -> T {
-        guard let jsonData = jsonString.data(using: .utf8) else { throw ParsingError.invalidJson }
-        let myModel = try JSONDecoder().decode(T.self, from: jsonData)
-        return myModel
-    }
-}
-
-enum ParsingError: Error {
-    case dateParsingError
-    case invalidJson
-    case encodingError
-    case dateEncodingError
-}
-

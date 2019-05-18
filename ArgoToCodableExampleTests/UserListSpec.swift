@@ -16,10 +16,11 @@ class UserListSpec: QuickSpec {
         describe("User") {
             context("When initialized with a valid user json") {
                 let json = jsonInFileWithName("userList")
+                let jsonData = json.data(using: .utf8)!
                 var userList: UserList!
 
                 beforeEach {
-                    userList = try! UserList.decode(from: json)
+                    userList = try! JSONDecoder().decode(UserList.self, from: jsonData)
                 }
 
                 it("gets decoded correctly from json") {
