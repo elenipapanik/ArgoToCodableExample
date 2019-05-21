@@ -12,9 +12,9 @@ import Runes
 import Ogra
 
 // for models that are ALREADY Swift.Decodable and want to be used inside an Argo decodable object
-protocol SwiftToArgoDecodable: Argo.Decodable {}
+protocol SwiftToArgoDecodable: Argo.Decodable, Swift.Decodable where Self.DecodedType == Self {}
 
-extension SwiftToArgoDecodable where Self: Swift.Decodable, Self.DecodedType == Self {
+extension SwiftToArgoDecodable {
     static func decode(_ json: JSON) -> Decoded<DecodedType> {
         do {
             let jsonData = try JSONSerialization.data(withJSONObject: json.JSONObject(), options: [])
@@ -27,7 +27,7 @@ extension SwiftToArgoDecodable where Self: Swift.Decodable, Self.DecodedType == 
 }
 
 // For models that are ALREADY Argo decodable and want to be used inside Swift decodable object
-protocol ArgoToSwiftDecodable: Argo.Decodable where Self.DecodedType == Self, Self: Swift.Decodable{}
+protocol ArgoToSwiftDecodable: Argo.Decodable, Swift.Decodable where Self.DecodedType == Self{}
 
 extension ArgoToSwiftDecodable {
     init(from decoder: Decoder) throws {
