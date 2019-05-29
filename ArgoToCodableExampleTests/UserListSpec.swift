@@ -17,17 +17,11 @@ class UserListSpec: QuickSpec {
             context("When initialized with a valid user json") {
                 let json = jsonInFileWithName("userList")
                 let jsonData = json.data(using: .utf8)!
-                var userList: UserList?
-
-                beforeEach {
-                   // userList = try! JSONDecoder().decode(UserList.self, from: jsonData)
-                }
 
                 it("gets decoded correctly from json") {
-
-                    expect{try JSONDecoder().decode(UserList.self, from: jsonData)}.toNot(beNil())
-                   // expect(userList.id).to(equal(0))
-                   // expect(userList.users).to(haveCount(2))
+                    expect{ try JSONDecoder().decode(UserList.self, from: jsonData) }.toNot(beNil())
+                    expect{ try JSONDecoder().decode(UserList.self, from: jsonData).id }.to(equal(0))
+                    expect{ try JSONDecoder().decode(UserList.self, from: jsonData).users }.to(haveCount(2))
                 }
             }
         }
