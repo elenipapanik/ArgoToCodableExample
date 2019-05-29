@@ -42,7 +42,6 @@ enum EmployeeLevel: String {
 }
 
 extension EmployeeLevel: Argo.Decodable {}
-
 extension EmployeeLevel: Swift.Decodable {}
 
 struct SocialProfile: Swift.Decodable, SwiftToArgoDecodable {
