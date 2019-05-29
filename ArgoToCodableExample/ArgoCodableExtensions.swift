@@ -21,7 +21,7 @@ extension SwiftToArgoDecodable {
             let decodedValue = try JSONDecoder().decode(Self.self, from: jsonData)
             return .success(decodedValue)
         } catch let error {
-            return .failure(.custom(error.localizedDescription))
+            return .failure(.custom((error as NSError).description))
         }
     }
 }
